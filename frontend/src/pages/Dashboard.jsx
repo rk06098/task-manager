@@ -8,7 +8,7 @@ export default function Dashboard({ token, logout, user }) {
 
   const fetchTasks = useCallback(async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/tasks', {
+      const res = await fetch('https://task-manager-zvzw.onrender.com/api/tasks', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -23,7 +23,7 @@ export default function Dashboard({ token, logout, user }) {
   }, [fetchTasks]);
 
   const toggleStatus = async (task) => {
-    await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+    await fetch(`https://task-manager-zvzw.onrender.com/api/tasks/${task._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ status: task.status === 'Pending' ? 'Completed' : 'Pending' }),
@@ -33,7 +33,7 @@ export default function Dashboard({ token, logout, user }) {
 
   const deleteTask = async (id) => {
     if (window.confirm('Delete this task?')) {
-      await fetch(`http://localhost:5000/api/tasks/${id}`, {
+      await fetch(`https://task-manager-zvzw.onrender.com/api/tasks/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });

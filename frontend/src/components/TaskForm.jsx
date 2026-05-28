@@ -18,7 +18,7 @@ export default function TaskForm({ token, fetchTasks, currentTask, setCurrentTas
     e.preventDefault();
     if (!title.trim()) return alert('Task title is required');
 
-    const url = currentTask ? `http://localhost:5000/api/tasks/${currentTask._id}` : 'http://localhost:5000/api/tasks';
+    const url = currentTask ? `https://task-manager-zvzw.onrender.com/api/tasks/${currentTask._id}` : 'https://task-manager-zvzw.onrender.com/api/tasks';
     const method = currentTask ? 'PUT' : 'POST';
 
     const res = await fetch(url, {
